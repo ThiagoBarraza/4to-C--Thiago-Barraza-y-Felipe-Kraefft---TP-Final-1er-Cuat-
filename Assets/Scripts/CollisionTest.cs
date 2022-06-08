@@ -5,6 +5,8 @@ using UnityEngine;
 public class CollisionTest : MonoBehaviour
 {
     int i;
+    public int NroVidas;
+    public bool Salto;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,14 +16,14 @@ public class CollisionTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(i == 3)
+        if(i >= NroVidas)
         {
             transform.position = new Vector3(925, 465, 0);
         }
     }
     void OnCollisionEnter(Collision col)
     {
-        
+        Salto = true;
         
         if (col.gameObject.name=="DeathWall")
         {
@@ -38,7 +40,7 @@ public class CollisionTest : MonoBehaviour
 
     void OnCollisionExit()
     {
-
+        Salto = false;
     }
 
     void OnCollisionStay()

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float MSpeed;
     public float RSpeed;
+    public CollisionTest Test;
     
     
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(0, 0, MSpeed);

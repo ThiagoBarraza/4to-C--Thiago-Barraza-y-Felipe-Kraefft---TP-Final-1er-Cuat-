@@ -18,10 +18,9 @@ public class MovimientoObs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 Neg = new Vector3(-6.4f, 0.7f, 5);
-        Vector3 Pos = new Vector3(6.4f, 0.7f, 5);
+        
 
-        if (gameObject.transform.position!=PosFinal && if1 == false)
+        if (gameObject.transform.position.x <= PosFinal.x && if1 == false)
         {
             gameObject.transform.Translate(velocidad, 0, 0);
         }
