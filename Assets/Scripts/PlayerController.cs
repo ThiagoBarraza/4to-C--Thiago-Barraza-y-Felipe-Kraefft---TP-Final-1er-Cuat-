@@ -7,18 +7,21 @@ public class PlayerController : MonoBehaviour
     public float MSpeed;
     public float RSpeed;
     public CollisionTest Test;
+    float i;
+    public int num;
     
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        i = 2 / MSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Test = FindObjectOfType<CollisionTest>();
+        
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(0, 0, MSpeed);
@@ -35,8 +38,9 @@ public class PlayerController : MonoBehaviour
         {
             transform.Rotate(0, -RSpeed, 0);
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && num != i)
         {
+            num++;
             transform.Translate(0, MSpeed, 0);
         }
     }

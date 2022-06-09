@@ -6,7 +6,9 @@ public class CollisionTest : MonoBehaviour
 {
     int i;
     public int NroVidas;
-    public bool Salto;
+    public bool Salto = false;
+    public PlayerController Play;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,8 @@ public class CollisionTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
         if(i >= NroVidas)
         {
             transform.position = new Vector3(925, 465, 0);
@@ -23,8 +27,10 @@ public class CollisionTest : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        Salto = true;
-        
+        Play = FindObjectOfType<PlayerController>();
+
+        Play.num = 0;
+
         if (col.gameObject.name=="DeathWall")
         {
             transform.position = new Vector3(0, 1, -25);
@@ -40,11 +46,12 @@ public class CollisionTest : MonoBehaviour
 
     void OnCollisionExit()
     {
+        
         Salto = false;
     }
 
     void OnCollisionStay()
     {
-
+        Salto = true;
     }
 }
