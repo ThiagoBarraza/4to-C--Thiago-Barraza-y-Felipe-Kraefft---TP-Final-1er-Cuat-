@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollisionTest : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class CollisionTest : MonoBehaviour
     public int NroVidas;
     public bool Salto = false;
     public PlayerController Play;
-    
+    public Text WinLose;
+    public Rigidbody rb;
+    public bool Playing = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +26,9 @@ public class CollisionTest : MonoBehaviour
         
         if(i >= NroVidas)
         {
-            transform.position = new Vector3(925, 465, 0);
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            WinLose.text = "Perdiste!!!";
+            Playing = false;
         }
     }
     void OnCollisionEnter(Collision col)
@@ -39,7 +45,9 @@ public class CollisionTest : MonoBehaviour
 
         if (col.gameObject.name == "WinCoin")
         {
-            transform.position = new Vector3(925, 425, 20);
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            WinLose.text = "Ganaste!!!";
+            Playing = false;
         }
 
     }

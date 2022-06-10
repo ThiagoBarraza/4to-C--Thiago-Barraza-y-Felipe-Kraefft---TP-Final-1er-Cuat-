@@ -20,14 +20,14 @@ public class MovimientoObs : MonoBehaviour
     {
         
 
-        if (gameObject.transform.position.x <= PosFinal.x && if1 == false)
+        if (gameObject.transform.position.x <= PosFinal.x && !if1)
         {
             gameObject.transform.Translate(velocidad, 0, 0);
         }
         else {
             if1 = true;
         }
-        if(gameObject.transform.position != PosInicial && if1 == true)
+        if(gameObject.transform.position != PosInicial && if1)
         {
             gameObject.transform.Translate(-velocidad, 0, 0);
         }

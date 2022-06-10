@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float MSpeed;
-    public float RSpeed;
-    public CollisionTest Test;
+    public float ZSpeed;
+    public float XSpeed;
+    public float Jump;
     float i;
     public int num;
     
@@ -14,34 +14,33 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        i = 2 / MSpeed;
+        i = 2 / Jump;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Test = FindObjectOfType<CollisionTest>();
         
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(0, 0, MSpeed);
+            transform.Translate(0, 0, ZSpeed);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(0, 0, -MSpeed);
+            transform.Translate(0, 0, -ZSpeed*.5f);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(0, RSpeed, 0);
+            transform.Translate(XSpeed, 0, 0);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(0, -RSpeed, 0);
+            transform.Translate(-XSpeed, 0, 0);
         }
         if (Input.GetKey(KeyCode.Space) && num != i)
         {
             num++;
-            transform.Translate(0, MSpeed, 0);
+            transform.Translate(0, Jump, 0);
         }
     }
 }
