@@ -40,8 +40,6 @@ public class CollisionTest : MonoBehaviour
     {
         Play = FindObjectOfType<PlayerController>();
 
-        Play.num = 0;
-
         if (col.gameObject.name=="DeathWall")
         {
             transform.position = new Vector3(0, 1, -25);
@@ -78,7 +76,7 @@ public class CollisionTest : MonoBehaviour
         Salto = true;
     }
 
-    IEnumerable Wait(int sec)
+    IEnumerator Wait(float sec)
     {
         yield return new WaitForSeconds(sec);
     }
