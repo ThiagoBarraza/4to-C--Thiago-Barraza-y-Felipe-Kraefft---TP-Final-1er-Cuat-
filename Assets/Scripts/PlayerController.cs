@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float ZSpeed;
     public float XSpeed;
+    public float RSpeed;
     public float Jump;
     float i;
     public int num;
@@ -37,6 +38,16 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(-XSpeed, 0, 0);
         }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            transform.Rotate(0, RSpeed, 0);
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            transform.Rotate(0, -RSpeed, 0);
+        }
+
         if (Input.GetKey(KeyCode.Space) && num != i)
         {
             num++;

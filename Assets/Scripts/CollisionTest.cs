@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,10 @@ public class CollisionTest : MonoBehaviour
     public Text WinLose;
     public Rigidbody rb;
     public bool Playing = true;
+
+    public GameObject proye1, proye2;
+
+    private GameObject clon1, clon2;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +52,16 @@ public class CollisionTest : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
             WinLose.text = "Ganaste!!!";
+            
+            for(int i = 0; i < 10; i++)
+            {
+                clon1 = Instantiate(proye1);
+                clon2 = Instantiate(proye2);
+            }
+
+            Wait(5);
+            Destroy(clon1);
+            Destroy(clon2);
             Playing = false;
         }
 
@@ -61,5 +76,10 @@ public class CollisionTest : MonoBehaviour
     void OnCollisionStay()
     {
         Salto = true;
+    }
+
+    IEnumerable Wait(int sec)
+    {
+        yield return new WaitForSeconds(sec);
     }
 }
