@@ -11,8 +11,9 @@ public class PlayerController : MonoBehaviour
 
     public int maxJumps;
     public float JumpForce;
+    public CollisionTest ColT;
 
-    int hasJump;
+    public int hasJump;
 
     Rigidbody rb;
     
@@ -20,15 +21,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         hasJump = maxJumps;
-
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        ColT = FindObjectOfType<CollisionTest>();
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(0, 0, ZSpeed);
@@ -57,21 +57,20 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && hasJump > 0)
         {
+            Debug.Log("Player salta");
             rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
-            hasJump--;
+            hasJump --;
         }
 
-        if (Input.GetKey("left shift"))
+        if(Input.GetKey(KeyCode.Space) && ColT.Playing == false)
+        {
+            transform.Translate(0, Jump, 0);
+        }
+
+        if (Input.GetKey("left shift") && ColT.Playing == false)
         {
             transform.Translate(0, -Jump, 0);
         }
 
-        void OnCollisionEnter(Collision col)
-        {
-            if (col.gameObject.tag == "Ground")
-            {
-                hasJump = maxJumps;
-            }
-        }
     }
 }

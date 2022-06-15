@@ -40,6 +40,12 @@ public class CollisionTest : MonoBehaviour
     {
         Play = FindObjectOfType<PlayerController>();
 
+        if (col.gameObject.tag == "Ground")
+        {
+            Debug.Log("Grounded");
+            Play.hasJump = Play.maxJumps;
+        }
+
         if (col.gameObject.name=="DeathWall")
         {
             transform.position = new Vector3(0, 1, -25);
@@ -50,16 +56,14 @@ public class CollisionTest : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
             WinLose.text = "Ganaste!!!";
-            
-            for(int i = 0; i < 10; i++)
+
+            for (int i = 0; i < 10; i++)
             {
                 clon1 = Instantiate(proye1);
                 clon2 = Instantiate(proye2);
             }
-
-            Wait(5);
-            Destroy(clon1);
-            Destroy(clon2);
+            Destroy(clon1, 5);
+            Destroy(clon2, 5);
             Playing = false;
         }
 
@@ -75,9 +79,10 @@ public class CollisionTest : MonoBehaviour
     {
         Salto = true;
     }
-
+    /*
     IEnumerator Wait(float sec)
     {
         yield return new WaitForSeconds(sec);
     }
+    */
 }
