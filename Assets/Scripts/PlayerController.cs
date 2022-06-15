@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && hasJump > 0)
         {
-            Debug.Log("Player salta");
             rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             hasJump --;
         }

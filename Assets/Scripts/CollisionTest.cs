@@ -15,13 +15,14 @@ public class CollisionTest : MonoBehaviour
     public GameObject panelWin, panelLose;
 
     public GameObject proye1, proye2;
-    
+
+    public int vidas;
     private GameObject clon1, clon2;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        vidas = NroVidas;
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class CollisionTest : MonoBehaviour
     {
         
         
-        if(NroVidas <= 0)
+        if(vidas <= 0)
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
             WinLose.text = "Perdiste!!!";
@@ -43,14 +44,13 @@ public class CollisionTest : MonoBehaviour
 
         if (col.gameObject.tag == "Ground")
         {
-            Debug.Log("Grounded");
             Play.hasJump = Play.maxJumps;
         }
 
         if (col.gameObject.name=="DeathWall")
         {
             transform.position = new Vector3(0, 1, -25);
-            NroVidas--;
+            vidas--;
         }
 
         if (col.gameObject.name == "WinCoin")
@@ -64,9 +64,11 @@ public class CollisionTest : MonoBehaviour
             {
                 clon1 = Instantiate(proye1);
                 clon2 = Instantiate(proye2);
+
+                Destroy(clon1, 5);
+                Destroy(clon2, 5);
             }
-            Destroy(clon1, 5);
-            Destroy(clon2, 5);
+
             Playing = false;
         }
 

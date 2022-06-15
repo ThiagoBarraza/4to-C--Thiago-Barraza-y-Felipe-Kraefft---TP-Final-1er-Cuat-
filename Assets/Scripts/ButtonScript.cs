@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
-    public CollisionTest Colision;
-    public Button PlayAgain;
-    public GameObject panelWin, panelLose;
+    CollisionTest Colision;
+    public GameObject panelWin, panelLose, btn_PlayAgain, Player;
     public Text Win_Lose;
+
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +22,26 @@ public class ButtonScript : MonoBehaviour
     {
         if (!Colision.Playing)
         {
-            PlayAgain.enabled = true;
+            Win_Lose.enabled = true;
+            btn_PlayAgain.SetActive(true);
         }
 
         if (Colision.Playing)
         {
-            PlayAgain.enabled = false;
             panelLose.SetActive(false);
             panelWin.SetActive(false);
             Win_Lose.enabled = false;
+            btn_PlayAgain.SetActive(false);
         }
+    }
+
+    public void PlayAgain(){
+        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+        Player.transform.position = new Vector3(0, 1, -25);
+        Player.transform.eulerAngles = new Vector3(0, 0, 0);
+        Colision.Playing = true;
+        Colision.vidas = Colision.NroVidas;
     }
 }
