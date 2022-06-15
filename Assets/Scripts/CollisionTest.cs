@@ -6,22 +6,22 @@ using UnityEngine.UI;
 
 public class CollisionTest : MonoBehaviour
 {
-    int i;
     public int NroVidas;
     public bool Salto = false;
     public PlayerController Play;
     public Text WinLose;
     public Rigidbody rb;
     public bool Playing = true;
+    public GameObject panelWin, panelLose;
 
     public GameObject proye1, proye2;
-
+    
     private GameObject clon1, clon2;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -29,10 +29,11 @@ public class CollisionTest : MonoBehaviour
     {
         
         
-        if(i >= NroVidas)
+        if(NroVidas <= 0)
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
             WinLose.text = "Perdiste!!!";
+            panelLose.SetActive(true);
             Playing = false;
         }
     }
@@ -49,13 +50,15 @@ public class CollisionTest : MonoBehaviour
         if (col.gameObject.name=="DeathWall")
         {
             transform.position = new Vector3(0, 1, -25);
-            i++;
+            NroVidas--;
         }
 
         if (col.gameObject.name == "WinCoin")
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
             WinLose.text = "Ganaste!!!";
+            panelWin.SetActive(true);
+
 
             for (int i = 0; i < 10; i++)
             {
@@ -79,10 +82,4 @@ public class CollisionTest : MonoBehaviour
     {
         Salto = true;
     }
-    /*
-    IEnumerator Wait(float sec)
-    {
-        yield return new WaitForSeconds(sec);
-    }
-    */
 }
