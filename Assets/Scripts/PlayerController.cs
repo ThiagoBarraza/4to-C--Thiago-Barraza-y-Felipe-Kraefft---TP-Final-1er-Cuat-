@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     public float ZSpeed;
     public float XSpeed;
     public float RSpeed;
-    public float Jump;
 
     public int maxJumps;
     public float JumpForce;
@@ -32,19 +31,19 @@ public class PlayerController : MonoBehaviour
         ColT = FindObjectOfType<CollisionTest>();
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(0, 0, ZSpeed);
+            transform.Translate(0, 0, ZSpeed * .2f);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(0, 0, -ZSpeed * .5f);
+            transform.Translate(0, 0, -ZSpeed * .1f);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(XSpeed, 0, 0);
+            transform.Translate(XSpeed * .1f, 0, 0);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(-XSpeed, 0, 0);
+            transform.Translate(-XSpeed * .1f, 0, 0);
         }
 
         if (Input.GetKey(KeyCode.E))
@@ -62,14 +61,9 @@ public class PlayerController : MonoBehaviour
             hasJump --;
         }
 
-        if(Input.GetKey(KeyCode.Space) && ColT.Playing == false)
-        {
-            transform.Translate(0, Jump, 0);
-        }
-
         if (Input.GetKey("left shift") && ColT.Playing == false)
         {
-            transform.Translate(0, -Jump, 0);
+            transform.Translate(0, -1, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.P))
