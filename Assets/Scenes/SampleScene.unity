@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1450,8 +1450,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ZSpeed: 0.3
   XSpeed: 0.1
+  RSpeed: 2
   Jump: 0.3
-  num: 0
+  maxJumps: 2
+  JumpForce: 5
 --- !u!114 &947010009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1464,12 +1466,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109f3020f4bd0044386d7ff9106d82ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NroVidas: 1
+  NroVidas: 3
   Salto: 0
   Play: {fileID: 947010008}
   WinLose: {fileID: 1513898766}
   rb: {fileID: 947010012}
   Playing: 1
+  proye1: {fileID: 0}
+  proye2: {fileID: 0}
 --- !u!65 &947010010
 BoxCollider:
   m_ObjectHideFlags: 0
