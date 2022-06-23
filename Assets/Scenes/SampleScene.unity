@@ -2082,7 +2082,7 @@ GameObject:
   - component: {fileID: 879946232}
   - component: {fileID: 879946231}
   m_Layer: 0
-  m_Name: Plataformas (1)
+  m_Name: Plataformas
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
