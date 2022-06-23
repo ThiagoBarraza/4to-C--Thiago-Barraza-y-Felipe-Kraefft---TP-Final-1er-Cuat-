@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpinZ : MonoBehaviour
+public class SpinX : MonoBehaviour
 {
-    public int SpinSpeed;
+    Vector3 v3 = Vector3.zero;
+    public float speed = 25.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.eulerAngles = v3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.eulerAngles += new Vector3(0, 0, SpinSpeed);
+        v3.x += speed * Time.deltaTime;
+        v3.y = -90;
+        transform.eulerAngles = v3;
     }
 }
