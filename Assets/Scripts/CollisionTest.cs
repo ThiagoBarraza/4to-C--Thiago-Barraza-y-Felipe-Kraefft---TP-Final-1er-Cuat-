@@ -50,6 +50,7 @@ public class CollisionTest : MonoBehaviour
         if (col.gameObject.name=="DeathWall")
         {
             transform.position = new Vector3(0, 1, -25);
+            transform.localEulerAngles = new Vector3(0, 0, 0);
             vidas--;
         }
 
